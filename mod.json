@@ -1,4 +1,5 @@
 {
+  "$schema": "https://rq-modding.github.io/rq-modding-docs/schemas/mod.schema.json",
   "id": "skip-network-popup",
   "name": "Skip Network Popup",
   "author": "Magnum Mods",

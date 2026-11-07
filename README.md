@@ -1,12 +1,33 @@
-# skip-network-popup
+# Skip Network Popup
 
-Silences TADA / HTTP failure popups that block agent testing (`getserverversion` / SDL msgbox).
+Stops the "data transfer failed" popups that block the game under RQ MOD.
 
-## Needs
+## What it changes
 
-1. Moru's fork (`RQ_modding_xsystem4`, `-Dmodloader=true`) — not stock xsystem4 1.0.0
-2. `rqmod` apply into a work copy (`rqmod\apply.ps1`)
+The game tries to reach AliceSoft's server (for the TADA mode server version and other online
+checks). RQ MOD has no network for it, so the game shows a message box such as
+`データ送信に失敗しました[getserverversion]` and waits for a click. This mod skips those message
+boxes. Nothing else changes: the game was not getting an answer anyway.
 
-Local-only git. No remote. Do not push until Moru asks.
+## Keys and settings
 
-Apply discovers this folder as sibling `mods\skip-network-popup\` next to `rqmod\`.
+None.
+
+## Saves
+
+Nothing.
+
+## Install
+
+Needs [RQ MOD](https://github.com/RQ-Modding/RQ-Mod) with loader **1.0.0** or newer. Extract the
+release zip into the game's `mods` folder, so that you have `mods/skip-network-popup/mod.json`.
+
+## How it works
+
+`rq.ain.skip_msgbox` patches the game's message box calls whose text holds `getserverversion`,
+`TADA` or `HTTPDownloader`, and `rq.ain.skip_sdl_msgbox` swallows the engine's own error boxes for
+those checks.
+
+## License
+
+MIT, see [LICENSE](LICENSE).
