@@ -24,9 +24,9 @@ release zip into the game's `mods` folder, so that you have `mods/skip-network-p
 
 ## How it works
 
-`rq.ain.skip_msgbox` patches the game's message box calls whose text holds `getserverversion`,
-`TADA` or `HTTPDownloader`, and `rq.ain.skip_sdl_msgbox` swallows the engine's own error boxes for
-those checks.
+`rq.ain.skip_sdl_msgbox()` turns on the engine's hook that swallows its native message boxes for
+the network checks: those whose text holds `getserverversion`, `TADA`, `HTTPDownloader` or
+`データ送信`. Each one it swallows is written to `logs/rqmod.log`.
 
 ## License
 

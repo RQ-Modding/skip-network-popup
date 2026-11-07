@@ -10,7 +10,6 @@ it, a native message box can stop the game's thread, and no pipe command answers
 
 ## How to check it
 
-1. At start the log says `skip-network-popup: patched N AIN msgbox site(s); SDL hook on`. N is 0
-   on the current game files (the texts are there, but no message box call shows them); the SDL
-   hook is what stops the boxes.
+1. At start the log says `[skip-network-popup] SDL hook on`. Each box it stops adds a line
+   `skip-network-popup: swallowed SDL msgbox: ...` with the box's text.
 2. Play to the title screen and into the game: no `データ送信に失敗しました` box appears.

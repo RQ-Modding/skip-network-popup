@@ -1,12 +1,10 @@
--- Silence TADA / HTTP failure popups that block agent testing.
--- xsystem4's HTTPDownloader.Get stub returns false; the AIN then shows
--- system.MsgBox ("データ送信に失敗しました[getserverversion]") via SDL.
+-- Stops the network failure popups that block the game under RQ MOD.
+-- xsystem4's HTTPDownloader.Get stub returns false, and the game then shows a native message box
+-- ("データ送信に失敗しました[getserverversion]") that waits for a click. The engine's SDL hook
+-- swallows those boxes (texts with getserverversion, TADA, HTTPDownloader or データ送信).
+--
+-- rq.ain.skip_msgbox is not used: on the current game files no system.MsgBox call shows these
+-- texts, so it patched 0 sites.
 
 rq.ain.skip_sdl_msgbox()
-
-local n = 0
-n = n + rq.ain.skip_msgbox("getserverversion")
-n = n + rq.ain.skip_msgbox("TADA")
-n = n + rq.ain.skip_msgbox("HTTPDownloader")
-
-rq.log(string.format("skip-network-popup: patched %d AIN msgbox site(s); SDL hook on", n))
+rq.log("SDL hook on")
