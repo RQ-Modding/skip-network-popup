@@ -2,7 +2,7 @@
   "$schema": "https://rq-modding.github.io/rq-modding-docs/schemas/mod.schema.json",
   "id": "skip-network-popup",
   "name": "Skip Network Popup",
-  "author": "Magnum Mods",
+  "author": "Moru Zerinho6",
   "version": "1.0.0",
   "loader": "1.0.0",
   "priority": 0
